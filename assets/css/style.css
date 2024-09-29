@@ -4,8 +4,13 @@
     font-family: 'Poppins' sans-serif;
 }
 
+body {
+    background: rgb(80,80,226);
+    background: linear-gradient(103deg, rgba(80,80,226,1) 0%, rgba(117,255,206,1) 100%);
+}
+
 main{
-    margin-top: 70px;
+    margin-top: 120px;
     padding: 15px;
     display: flex;
     justify-content: center;
@@ -14,7 +19,7 @@ main{
 
 .navbar-nav a:hover{
     text-decoration: none;
-     background-color: #3a3593;
+     background-color: #4F75FF;
      color: white;
      border-radius: 20px;
      transition: 0.6s;
@@ -24,6 +29,6 @@ main{
     display: flex;
     margin: 10px;
     padding: 6px 15px;
-   color: #3a3593;
+   color: #4F75FF;
    font-weight: 600;
  }

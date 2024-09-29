@@ -2,24 +2,21 @@
 
 <main>
     <div class="position-relative">
-       <div class="card border-dark">
-            <div class="card-body d-flex flex-row align-items-start col-md-12">
-                <div class="row tm-mb-90 tm-gallery p-3">
-                    <div class="col-md-12">
-                        <img src="../assets/img/dashboard.jpeg" style="width: 350px; height:50%;">
-                        <h6>Nike Jordan</h6>
-                        <h6>Rp.800.000</h6>
-                        <a href="#" class="btn btn-warning">Beli</a>
-                        <a href="#" class="btn btn-info">Detail</a>
-                    </div>
-                    <div class="col-md-12">
-                        <img src="../assets/img/dashboard.jpeg" style="width: 350px; height:50%;">
-                        <h6>Nike Jordan</h6>
-                        <h6>Rp.800.000</h6>
-                        <a href="#" class="btn btn-warning">Beli</a>
-                        <a href="#" class="btn btn-info">Detail</a>
-                    </div>
-                </div>
+       <div class="card border-secondary">
+            <div class="card-body col-md-12">
+                <h1 class="text-center">TENTANG KAMI</h1>
+                <p class="text-center">PERKUMPULAN KINOLOGI INDONESIA (PERKIN) adalah organisasi yang
+                 menjadi induk organisasi penggemar anjing ras (anjing trah) di Indonesia. Organisasi 
+                 ini adalah satu-satunya lembaga pendaftaran yang berwenang mengeluarkan surat 
+                 silsilah (stamboom) anjing trah di Indonesia, dan menetapkan standar anjing trah 
+                 Indonesia (Anjing Kintamani). PERKIN adalah tempat pendaftaran ganti nama pemilik, 
+                 kelahiran anak anjing, nama panggilan, nama kandang, pembuatan duplikat silsilah, 
+                 dan registrasi ulang anjing impor. Selain itu, PERKIN dengan dukungan klub-klub anjing
+                 trah adalah satu-satunya penyelenggara resmi kontes anjing trah di Indonesia. Sejak 
+                 masih bernama Nederlansch Indische Kinologi Vereeninging, PERKIN sudah terdaftar 
+                 sebagai anggota Federasi Kinologi Internasional (FCI). Di tingkat Asia, PERKIN adalah
+                salah satu dari 11 negara anggota Asia Kennel Union yang berkantor pusat di Japan
+                Kennel Club, Tokyo.</p>
             </div>
        </div>
     </div>
