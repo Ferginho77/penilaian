@@ -1,4 +1,4 @@
-<?php include_once'../assets/layouts/header.php'; ?>
+<?php include_once'layouts/header.php'; ?>
 
 <main>
     <div class="position-relative">

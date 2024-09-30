@@ -27,8 +27,7 @@
     </a>
     <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
         <li class="dropdown-header">
-            <h6>Nama</h6>
-            <span>Email</span>
+            <h6></h6>
         </li>
         <li>
             <hr class="dropdown-divider">
