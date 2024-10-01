@@ -6,7 +6,9 @@ $tampil = new C_kategori();
 
 <main>
     <a href="data.php" class="btn btn-danger">Kembali</a>
-    <a href="#" class="btn btn-info text-white">Tambah Data</a>
+
+
+    
 <?php 
                         $event = $tampil->tampil_devent($_GET['IdKategori']);
                         if (empty($event)) {
@@ -19,8 +21,6 @@ $tampil = new C_kategori();
                         <?php }?>  
 
 <div id="tambahdata">
-    <form action="#" method="POST">
 
-    </form>
 </div>
 </main>

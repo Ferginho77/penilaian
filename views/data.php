@@ -15,7 +15,7 @@ $tampil = new C_kategori();
                                 } else {
                                  foreach ($event as $x) : 
                                  ?>  
-        <div class="card" style="width: 18rem;">
+        <div class="card mt-3 d-flex justify-content-evenly" style="width: 18rem;">
         <div class="card-body">
                 <h5 class="card-title"><?= $x->NamaEvent ?></h5>
                 <p class="card-text"><?= $x->Deskripsi ?></p>
