@@ -14,8 +14,7 @@ class C_user {
                      </script>";
             }else{
                 $sql = mysqli_query($conn->koneksi, "INSERT INTO juri VALUES (NULL, '$Username', '$Password', '$NamaJuri')" );
-                var_dump($sql);
-                exit;
+            
                 if ($sql) {
                     header("Location: ../index.php");
                     } else {
