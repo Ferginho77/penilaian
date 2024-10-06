@@ -36,4 +36,17 @@ class C_peserta {
 		return $result;
         
 	}
+
+    public function SelectPeserta($no_peserta) {
+        $conn = new database();
+        
+        $query = "SELECT * FROM peserta WHERE no_peserta = $no_peserta";
+        $data = mysqli_query($conn->koneksi, $query);
+        
+        $hasil = [];
+        while ($d = mysqli_fetch_object($data)) {
+            $hasil[] = $d;
+        }
+        return $hasil;
+    }
 }

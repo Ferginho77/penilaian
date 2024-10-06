@@ -24,5 +24,6 @@ $tampil = new C_kategori();
         </div>
         <?php endforeach ?>
         <?php }?>   
+        
    </div>
 </main>

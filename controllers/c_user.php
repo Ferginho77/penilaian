@@ -50,5 +50,14 @@ class C_user {
     }
 
 
+    public function logout(){
+
+        //menghentikan session
+        session_destroy();
+      
+
+        header("Location: ../index.php");
+        exit;
+    }
 
 }

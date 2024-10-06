@@ -1,9 +1,11 @@
 <?php include_once'../views/layouts/header.php'; 
 include_once'../controllers/c_kategori.php';
 include_once'../controllers/c_peserta.php';
+include_once'../controllers/c_nilai.php';
 
 $tampil = new C_kategori();
 $peserta = new C_peserta();
+$nilai = new C_nilai();
 ?>
 
 <main>                      
@@ -53,8 +55,7 @@ $peserta = new C_peserta();
                                 </select>
                             </div>
                             <div class="form-group">
-                                    <label>Pilih Event</label>
-                                    <select name="IdKategori" class="form-select">
+                                    <select name="IdKategori" class="form-select" hidden>
                                     <?php foreach (($tampil->tampil_devent($_GET['IdKategori'])) as $x) : ?>
                                         <option value="<?= $x->IdKategori ?>"><?= $x->NamaEvent ?></option>
                                     <?php endforeach; ?>
@@ -87,25 +88,31 @@ $peserta = new C_peserta();
                          echo "";
                         } else {
                          foreach ($peserta->Tampilpeserta($_GET['IdKategori'])as $x) : 
-                         ?>  
-                            
-                        
+                         ?>           
                         <tbody>
                          <tr>
                            <td><?= $x->nama_anjing ?></td>
                            <td><?= $x->nama_pemilik ?></td>
                            <td><a onclick="return confirm('Apakah yakin data akan di hapus?')" href="../routers/r_peserta.php?no_peserta=<?= $x->no_peserta ?>&aksi=hapus"><button type="button" name="hapus" class="btn btn-round btn-danger"><i class="far fa-trash-alt"></i></button></a>
-                           <a href="#" class="btn btn-outline-info">Pilih</a>
+                           <a href="nilai.php?no_peserta=<?= $x->no_peserta ?>" class="btn btn-outline-info">Pilih</a>
                         </td>
                          </tr>   
                          <?php endforeach ?>
                         <?php }?>  
                         </tbody>
                     </table>
+             
                     </div>
                 </div>
             </div>
     </div>
+    <?php
+    $event = $nilai->TampilNilai($_GET['IdKategori']);
+                        if (empty($event)) {
+                         echo "";
+                        } else {
+                         foreach ($nilai->TampilNilai($_GET['IdKategori'])as $x) : 
+                         ?> 
     <div class="card mt-5">
         <div class="card-header">
             <h3>Result</h3>
@@ -113,10 +120,31 @@ $peserta = new C_peserta();
         <div class="card-body">
         <table class="table table-striped table-hover">
             <thead>
-
+                 <tr>
+                    <td>No Peserta</td>
+                    <td>Timestamp</td>
+                    <td>Status</td>
+                    <td>Waktu Tempuh</td>
+                    <td>Fault</td>
+                    <td>Refusal</td>
+                    <td>Result</td>
+                 </tr>           
             </thead>
+            <tbody>
+                <tr>
+                    <td><?= $x->no_peserta ?></td>
+                    <td><?= $x->timestamp?></td>
+                    <td><?= $x->status ?></td>
+                    <td><?= $x->waktu_tempuh ?></td>
+                    <td><?= $x->fault ?></td>
+                    <td><?= $x->refusal ?></td>
+                    <td><?= $x->result ?></td>
+                </tr>
+            </tbody>
         </table>
         </div>
     </div>
+    <?php endforeach ?>
+    <?php }?>
 </div>
 </main>

@@ -21,3 +21,11 @@ elseif ($_GET['aksi'] == 'login') {
     // echo _dump($Username, $Password);
     $user->login($Username, $Password);
 }
+elseif ($_GET['aksi'] == 'logout') {
+    $user->logout();
+    if($user){
+        echo "<script>alert('Logout Berhasil');window.location='../../index.php'</script>";
+    } else {
+        echo "<script>alert('Logout Gagal');window.location='../views/dashboard.php'</script>";
+    }
+}

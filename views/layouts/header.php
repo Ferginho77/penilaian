@@ -42,7 +42,7 @@
             <hr class="dropdown-divider">
         </li>
         <li>
-            <a class="dropdown-item d-flex align-items-center" href="" onclick="return confirm('Yakin ingin keluar dari aplikasi?')">
+            <a class="dropdown-item d-flex align-items-center" href="../routers/r_user.php?aksi=logout" onclick="return confirm('Yakin ingin keluar dari aplikasi?')">
             <i class="fas fa-sign-out-alt"></i>
                 <span>Sign Out</span>
             </a>
@@ -54,6 +54,10 @@
       </div>
       </div>
 </nav>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
