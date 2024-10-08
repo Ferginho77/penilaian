@@ -6,7 +6,7 @@ class C_nilai {
     public function TampilNilai($id){
         $conn = new database();
         
-        $query = "SELECT * FROM penilaian WHERE IdKategori = $id";
+        $query = "SELECT * FROM penilaian INNER JOIN juri ON penilaian.IdJuri=juri.IdJuri";
         $data = mysqli_query($conn->koneksi, $query);
         
         $hasil = [];
@@ -16,11 +16,11 @@ class C_nilai {
         return $hasil;
     }
 
-    public function TambahNilai($timestamp, $status, $waktu_tempuh, $fault, $refusal, $result, $IdKategori, $no_peserta) {
+    public function TambahNilai($status, $waktu_tempuh, $fault, $refusal, $result, $IdKategori, $no_peserta, $IdJuri) {
         $conn = new database();
         
         // Tambahkan koma setelah '$no_peserta'
-        $sql = "INSERT INTO penilaian VALUES (NULL, '$timestamp', '$status', '$waktu_tempuh', '$fault', '$refusal', '$result', '$IdKategori', '$no_peserta')";
+        $sql = "INSERT INTO penilaian VALUES (NULL, '$status', '$waktu_tempuh', '$fault', '$refusal', '$result', '$IdKategori', '$no_peserta', $IdJuri)";
         
         $queryResult = mysqli_query($conn->koneksi, $sql);
         

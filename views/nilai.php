@@ -14,10 +14,6 @@ $peserta = new C_peserta();
                         <div class="card-body">
                         <form method="post" action="../routers/r_nilai.php?aksi=tambah">
                             <div class="form-group">
-                                <label for="timestamp">Timestamp</label>
-                                <input type="text" class="form-control" id="timestamp" name="timestamp">
-                            </div>
-                            <div class="form-group">
                                 <label for="status">Status</label>
                                 <select name="status" class="form-select">
                                     <option value="Finish">Finish</option>
@@ -46,6 +42,9 @@ $peserta = new C_peserta();
                             </div>
                             <div class="form-group">
                                 <input type="hidden" class="form-control" value="<?= $tampil->no_peserta ?>"  name="no_peserta">
+                            </div>
+                            <div class="form-group">
+                                <input type="text" class="form-control" value="<?= $_SESSION['data']['IdJuri'] ?>"  name="IdJuri">
                             </div>
                             <div class="modal-footer">
                         <a href="devent.php?IdKategori=<?= $tampil->IdKategori ?>"><button type="button" class="btn btn-secondary">Close</button></a>

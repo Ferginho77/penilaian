@@ -14,8 +14,9 @@ if(isset($_GET['aksi'])) {
             $size = $_POST['size'];
             $kelas = $_POST['kelas'];
             $IdKategori = $_POST['IdKategori'];
+            $IdJuri = $_POST['IdJuri'];
         
-            $peserta->TambahPeserta($nama_anjing, $nama_pemilik, $handler, $size, $kelas, $IdKategori);
+            $peserta->TambahPeserta($nama_anjing, $nama_pemilik, $handler, $size, $kelas, $IdKategori, $IdJuri);
         if ($peserta) {
             header("Location: ../views/devent.php?IdKategori=$IdKategori");
         }   

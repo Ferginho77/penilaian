@@ -8,7 +8,6 @@ if(isset($_GET['aksi'])) {
     // Aksi tambah
     if ($_GET['aksi'] == 'tambah') {
         if (isset($_POST['tambah'])) {
-            $timestamp = $_POST['timestamp'];
             $status = $_POST['status'];
             $waktu_tempuh = $_POST['waktu_tempuh'];
             $fault = $_POST['fault'];
@@ -16,9 +15,10 @@ if(isset($_GET['aksi'])) {
             $result = $_POST['result'];
             $IdKategori = $_POST['IdKategori'];
             $no_peserta = $_POST['no_peserta'];
+            $IdJuri = $_POST['IdJuri'];
           
         
-            $nilai->TambahNilai( $timestamp, $status, $waktu_tempuh, $fault, $refusal, $result, $IdKategori, $no_peserta);
+            $nilai->TambahNilai(  $status, $waktu_tempuh, $fault, $refusal, $result, $IdKategori, $no_peserta, $IdJuri);
             if ($nilai) {
                 header("Location: ../views/devent.php?IdKategori=$IdKategori");
             } else {

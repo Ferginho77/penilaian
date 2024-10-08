@@ -48,25 +48,28 @@ INSERT INTO `kategori` (`IdKategori`, `NamaEvent`, `Deskripsi`) VALUES
 
 -- Dumping structure for table perkin.penilaian
 CREATE TABLE IF NOT EXISTS `penilaian` (
-  `IdNilai` int NOT NULL,
-  `timestamp` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `IdNilai` int NOT NULL AUTO_INCREMENT,
   `status` varchar(50) COLLATE utf8mb4_general_ci DEFAULT NULL,
   `waktu_tempuh` decimal(10,2) DEFAULT NULL,
   `fault` int DEFAULT NULL,
   `refusal` int DEFAULT NULL,
   `result` decimal(10,2) DEFAULT NULL,
-  `no_peserta` int NOT NULL,
   `IdKategori` int DEFAULT NULL,
+  `no_peserta` int DEFAULT NULL,
+  `IdJuri` int DEFAULT NULL,
   PRIMARY KEY (`IdNilai`) USING BTREE,
-  KEY `FK_nilai_lomnba_peserta` (`no_peserta`),
   KEY `FK_penilaian_kategori` (`IdKategori`),
-  CONSTRAINT `FK_nilai_lomnba_peserta` FOREIGN KEY (`no_peserta`) REFERENCES `peserta` (`no_peserta`) ON DELETE CASCADE ON UPDATE CASCADE,
-  CONSTRAINT `FK_penilaian_kategori` FOREIGN KEY (`IdKategori`) REFERENCES `kategori` (`IdKategori`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+  KEY `FK_penilaian_peserta` (`no_peserta`),
+  KEY `FK_penilaian_juri` (`IdJuri`),
+  CONSTRAINT `FK_penilaian_juri` FOREIGN KEY (`IdJuri`) REFERENCES `juri` (`IdJuri`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `FK_penilaian_kategori` FOREIGN KEY (`IdKategori`) REFERENCES `kategori` (`IdKategori`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `FK_penilaian_peserta` FOREIGN KEY (`no_peserta`) REFERENCES `peserta` (`no_peserta`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB AUTO_INCREMENT=22 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
--- Dumping data for table perkin.penilaian: ~1 rows (approximately)
-INSERT INTO `penilaian` (`IdNilai`, `timestamp`, `status`, `waktu_tempuh`, `fault`, `refusal`, `result`, `no_peserta`, `IdKategori`) VALUES
-	(1, '2024-10-06 01:46:13', 'finish', 8.00, 1, 1, 2.00, 7, 5);
+-- Dumping data for table perkin.penilaian: ~2 rows (approximately)
+INSERT INTO `penilaian` (`IdNilai`, `status`, `waktu_tempuh`, `fault`, `refusal`, `result`, `IdKategori`, `no_peserta`, `IdJuri`) VALUES
+	(18, 'Eliminasi', 0.01, 1, 1, 0.01, 5, 20, 6),
+	(20, 'Eliminasi', 0.03, 2, 2, 0.02, 5, 20, 7);
 
 -- Dumping structure for table perkin.peserta
 CREATE TABLE IF NOT EXISTS `peserta` (
@@ -77,14 +80,17 @@ CREATE TABLE IF NOT EXISTS `peserta` (
   `size` varchar(50) COLLATE utf8mb4_general_ci DEFAULT NULL,
   `kelas` varchar(50) COLLATE utf8mb4_general_ci DEFAULT NULL,
   `IdKategori` int DEFAULT NULL,
+  `IdJuri` int DEFAULT NULL,
   PRIMARY KEY (`no_peserta`),
   KEY `FK_nama_anjing_kategori` (`IdKategori`),
-  CONSTRAINT `FK_nama_anjing_kategori` FOREIGN KEY (`IdKategori`) REFERENCES `kategori` (`IdKategori`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+  KEY `FK_peserta_juri` (`IdJuri`),
+  CONSTRAINT `FK_nama_anjing_kategori` FOREIGN KEY (`IdKategori`) REFERENCES `kategori` (`IdKategori`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `FK_peserta_juri` FOREIGN KEY (`IdJuri`) REFERENCES `juri` (`IdJuri`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- Dumping data for table perkin.peserta: ~1 rows (approximately)
-INSERT INTO `peserta` (`no_peserta`, `nama_anjing`, `nama_pemilik`, `handler`, `size`, `kelas`, `IdKategori`) VALUES
-	(7, 'handy', 'Me', 'MEEEY', '', '', 5);
+INSERT INTO `peserta` (`no_peserta`, `nama_anjing`, `nama_pemilik`, `handler`, `size`, `kelas`, `IdKategori`, `IdJuri`) VALUES
+	(20, 'Dom', 'a', 'MEEEY', 'Medium', 'FA1', 5, 6);
 
 /*!40103 SET TIME_ZONE=IFNULL(@OLD_TIME_ZONE, 'system') */;
 /*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;

@@ -3,9 +3,9 @@
 include_once 'conn.php';
 
 class C_peserta {
-    public function TambahPeserta($nama_anjing, $nama_pemilik, $handler, $size, $kelas, $IdKategori) {
+    public function TambahPeserta($nama_anjing, $nama_pemilik, $handler, $size, $kelas, $IdKategori, $IdJuri) {
         $conn = new database();
-        $sql = "INSERT INTO peserta VALUES (NULL, '$nama_anjing', '$nama_pemilik', '$handler', '$size', '$kelas', '$IdKategori')";
+        $sql = "INSERT INTO peserta VALUES (NULL, '$nama_anjing', '$nama_pemilik', '$handler', '$size', '$kelas', '$IdKategori', '$IdJuri')";
            
         $result = mysqli_query($conn->koneksi, $sql);
         

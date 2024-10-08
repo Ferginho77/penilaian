@@ -58,8 +58,11 @@ $nilai = new C_nilai();
                                     <select name="IdKategori" class="form-select" hidden>
                                     <?php foreach (($tampil->tampil_devent($_GET['IdKategori'])) as $x) : ?>
                                         <option value="<?= $x->IdKategori ?>"><?= $x->NamaEvent ?></option>
-                                    
                                     </select>
+                            </div>
+                              
+                            <div class="form-group">
+                                <input type="hidden" class="form-control" name="IdJuri" value="<?= $_SESSION['data']['IdJuri'] ?>">
                             </div>
                             <a href="devent.php?IdKategori=<?= $x->IdKategori ?>"><button type="submit" name="tambah" class="btn-input btn btn-outline-info mt-3">Tambah Data</button></a>
                             <?php endforeach; ?>
@@ -117,7 +120,7 @@ $nilai = new C_nilai();
             <thead>
                  <tr>
                     <td>No Peserta</td>
-                    <td>Timestamp</td>
+                    <td>Juri</td>
                     <td>Status</td>
                     <td>Waktu Tempuh</td>
                     <td>Fault</td>
@@ -135,7 +138,7 @@ $nilai = new C_nilai();
             <tbody>
                 <tr>
                     <td><?= $x->no_peserta ?></td>
-                    <td><?= $x->timestamp?></td>
+                    <td><?= $x->Username ?></td>
                     <td><?= $x->status ?></td>
                     <td><?= $x->waktu_tempuh ?></td>
                     <td><?= $x->fault ?></td>
