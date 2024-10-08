@@ -16,18 +16,20 @@ if(isset($_GET['aksi'])) {
             $IdKategori = $_POST['IdKategori'];
         
             $peserta->TambahPeserta($nama_anjing, $nama_pemilik, $handler, $size, $kelas, $IdKategori);
-            var_dump($_POST);
-            exit;
+        if ($peserta) {
+            header("Location: ../views/devent.php?IdKategori=$IdKategori");
+        }   
         }
         
     }
 
     if ($_GET['aksi'] == 'hapus') {
         $no_peserta = $_GET['no_peserta'];
+        $IdKategori = $_GET['IdKategori'];
         $result = $peserta->hapus($no_peserta);
 
         if ($result) {
-            header("Location: ../views/devent.php");
+            header("Location: ../views/devent.php?IdKategori=$IdKategori");
         } else {
             echo "<script>alert('Data Gagal Dihapus');window.location='../views/kategori.php'</script>";
         }

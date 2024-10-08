@@ -34,34 +34,35 @@ $nilai = new C_nilai();
                             <div class="form-group">
                                 <label>Size</label>
                                 <select name="size" class="form-select">
-                                    <option value="">Small</option>
-                                    <option value="">Medium</option>
-                                    <option value="">Large</option>
-                                    <option value="">Intermediate</option>
+                                    <option value="Small">Small</option>
+                                    <option value="Medium">Medium</option>
+                                    <option value="Large">Large</option>
+                                    <option value="Intermediate">Intermediate</option>
                                 </select>
                             </div>
                             
                             <div class="form-group">
                                 <label>Kelas</label>
                                 <select name="kelas" class="form-select">
-                                    <option value="">FA1</option>
-                                    <option value="">FA2</option>
-                                    <option value="">A1</option>
-                                    <option value="">A2</option>
-                                    <option value="">A3</option>
-                                    <option value="">J1</option>
-                                    <option value="">J2</option>
-                                    <option value="">J3 </option>
+                                    <option value="FA1">FA1</option>
+                                    <option value="FA2">FA2</option>
+                                    <option value="A1">A1</option>
+                                    <option value="A2">A2</option>
+                                    <option value="A3">A3</option>
+                                    <option value="J1">J1</option>
+                                    <option value="J2">J2</option>
+                                    <option value="J3">J3 </option>
                                 </select>
                             </div>
                             <div class="form-group">
                                     <select name="IdKategori" class="form-select" hidden>
                                     <?php foreach (($tampil->tampil_devent($_GET['IdKategori'])) as $x) : ?>
                                         <option value="<?= $x->IdKategori ?>"><?= $x->NamaEvent ?></option>
-                                    <?php endforeach; ?>
+                                    
                                     </select>
                             </div>
-                            <button type="submit" name="tambah" class="btn-input btn btn-outline-info mt-3">Tambah Data</button>
+                            <a href="devent.php?IdKategori=<?= $x->IdKategori ?>"><button type="submit" name="tambah" class="btn-input btn btn-outline-info mt-3">Tambah Data</button></a>
+                            <?php endforeach; ?>
                         </form>
 
                     </div>
@@ -93,7 +94,7 @@ $nilai = new C_nilai();
                          <tr>
                            <td><?= $x->nama_anjing ?></td>
                            <td><?= $x->nama_pemilik ?></td>
-                           <td><a onclick="return confirm('Apakah yakin data akan di hapus?')" href="../routers/r_peserta.php?no_peserta=<?= $x->no_peserta ?>&aksi=hapus"><button type="button" name="hapus" class="btn btn-round btn-danger"><i class="far fa-trash-alt"></i></button></a>
+                           <td><a onclick="return confirm('Apakah yakin data akan di hapus?')" href="../routers/r_peserta.php?no_peserta=<?= $x->no_peserta ?>&IdKategori=<?= $x->IdKategori ?>&aksi=hapus"><button type="button" name="hapus" class="btn btn-round btn-danger"><i class="far fa-trash-alt"></i></button></a>
                            <a href="nilai.php?no_peserta=<?= $x->no_peserta ?>" class="btn btn-outline-info">Pilih</a>
                         </td>
                          </tr>   
@@ -106,13 +107,7 @@ $nilai = new C_nilai();
                 </div>
             </div>
     </div>
-    <?php
-    $event = $nilai->TampilNilai($_GET['IdKategori']);
-                        if (empty($event)) {
-                         echo "";
-                        } else {
-                         foreach ($nilai->TampilNilai($_GET['IdKategori'])as $x) : 
-                         ?> 
+   
     <div class="card mt-5">
         <div class="card-header">
             <h3>Result</h3>
@@ -130,6 +125,13 @@ $nilai = new C_nilai();
                     <td>Result</td>
                  </tr>           
             </thead>
+            <?php
+    $event = $nilai->TampilNilai($_GET['IdKategori']);
+                        if (empty($event)) {
+                         echo "";
+                        } else {
+                         foreach ($nilai->TampilNilai($_GET['IdKategori'])as $x) : 
+                         ?> 
             <tbody>
                 <tr>
                     <td><?= $x->no_peserta ?></td>
@@ -140,11 +142,12 @@ $nilai = new C_nilai();
                     <td><?= $x->refusal ?></td>
                     <td><?= $x->result ?></td>
                 </tr>
+                <?php endforeach ?>
+                <?php }?>
             </tbody>
         </table>
         </div>
     </div>
-    <?php endforeach ?>
-    <?php }?>
+   
 </div>
 </main>

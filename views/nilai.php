@@ -20,9 +20,9 @@ $peserta = new C_peserta();
                             <div class="form-group">
                                 <label for="status">Status</label>
                                 <select name="status" class="form-select">
-                                    <option value="">Finish</option>
-                                    <option value="">Eliminasi</option>
-                                    <option value="">Diskualifikasi</option>
+                                    <option value="Finish">Finish</option>
+                                    <option value="Eliminasi">Eliminasi</option>
+                                    <option value="Diskualifikasi">Diskualifikasi</option>
                                 </select>
                             </div>
                             <div class="form-group">
@@ -42,14 +42,14 @@ $peserta = new C_peserta();
                                 <input type="number" step="0.01" class="form-control" id="result" name="result">
                             </div>
                             <div class="form-group">
-                                <input type="hidden" class="form-control" value="<?= $tampil->no_peserta ?>"  name="no_peserta">
+                                <input type="hidden" class="form-control" value="<?= $tampil->IdKategori ?>"  name="IdKategori">
                             </div>
                             <div class="form-group">
-                                <input type="hidden" class="form-control" value="<?= $tampil->IdKategori ?>"  name="no_peserta">
+                                <input type="hidden" class="form-control" value="<?= $tampil->no_peserta ?>"  name="no_peserta">
                             </div>
                             <div class="modal-footer">
-                        <a href="devent.php"><button type="button" class="btn btn-secondary">Close</button></a>
-                        <button type="submit" class="btn btn-primary" name="tambah" onclick="submitForm()">Save</button>
+                        <a href="devent.php?IdKategori=<?= $tampil->IdKategori ?>"><button type="button" class="btn btn-secondary">Close</button></a>
+                        <button type="submit" class="btn btn-primary" name="tambah">Save</button>
                     </div>
                         </form>
                         </div>

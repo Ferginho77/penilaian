@@ -14,11 +14,16 @@ if(isset($_GET['aksi'])) {
             $fault = $_POST['fault'];
             $refusal = $_POST['refusal'];
             $result = $_POST['result'];
-            $no_peserta = $_POST['no_peserta'];
             $IdKategori = $_POST['IdKategori'];
+            $no_peserta = $_POST['no_peserta'];
+          
         
-            $nilai->TambahNilai( $timestamp, $status, $waktu_tempuh, $fault, $refusal, $result, $no_peserta, $IdKategori);
-           
+            $nilai->TambahNilai( $timestamp, $status, $waktu_tempuh, $fault, $refusal, $result, $IdKategori, $no_peserta);
+            if ($nilai) {
+                header("Location: ../views/devent.php?IdKategori=$IdKategori");
+            } else {
+                echo "<script>alert('Data Gagal Ditambah');window.location='../views/devent.php'</script>";
+            }
         }
     }
 }

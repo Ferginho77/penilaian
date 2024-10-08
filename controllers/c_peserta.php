@@ -9,11 +9,6 @@ class C_peserta {
            
         $result = mysqli_query($conn->koneksi, $sql);
         
-        if ($result) {
-            header("Location: ../views/devent.php");
-        } else {
-            echo "<script>alert('Data Gagal Ditambah');window.location='../views/devent.php'</script>";
-        }
     }
 
     public function Tampilpeserta($IdKategori){
