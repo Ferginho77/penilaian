@@ -3,10 +3,14 @@
 include_once 'conn.php';
 
 class C_nilai {
-    public function TampilNilai($id){
+    public function TampilNilai($IdKategori){
         $conn = new database();
         
-        $query = "SELECT * FROM penilaian INNER JOIN juri ON penilaian.IdJuri=juri.IdJuri";
+        $query = "SELECT penilaian.*, juri.Username, peserta.nama_anjing 
+                  FROM penilaian 
+                  INNER JOIN juri ON penilaian.IdJuri = juri.IdJuri 
+                  INNER JOIN peserta ON penilaian.no_peserta = peserta.no_peserta
+                  WHERE penilaian.IdKategori = $IdKategori";
         $data = mysqli_query($conn->koneksi, $query);
         
         $hasil = [];
@@ -15,7 +19,7 @@ class C_nilai {
         }
         return $hasil;
     }
-
+    
     public function TambahNilai($status, $waktu_tempuh, $fault, $refusal, $result, $IdKategori, $no_peserta, $IdJuri) {
         $conn = new database();
         

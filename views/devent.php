@@ -110,47 +110,50 @@ $nilai = new C_nilai();
                 </div>
             </div>
     </div>
-   
     <div class="card mt-5">
-        <div class="card-header">
-            <h3>Result</h3>
-        </div>
-        <div class="card-body">
-        <table class="table table-striped table-hover">
-            <thead>
-                 <tr>
-                    <td>No Peserta</td>
-                    <td>Juri</td>
-                    <td>Status</td>
-                    <td>Waktu Tempuh</td>
-                    <td>Fault</td>
-                    <td>Refusal</td>
-                    <td>Result</td>
-                 </tr>           
-            </thead>
-            <?php
-    $event = $nilai->TampilNilai($_GET['IdKategori']);
-                        if (empty($event)) {
-                         echo "";
-                        } else {
-                         foreach ($nilai->TampilNilai($_GET['IdKategori'])as $x) : 
-                         ?> 
-            <tbody>
-                <tr>
-                    <td><?= $x->no_peserta ?></td>
-                    <td><?= $x->Username ?></td>
-                    <td><?= $x->status ?></td>
-                    <td><?= $x->waktu_tempuh ?></td>
-                    <td><?= $x->fault ?></td>
-                    <td><?= $x->refusal ?></td>
-                    <td><?= $x->result ?></td>
-                </tr>
-                <?php endforeach ?>
-                <?php }?>
-            </tbody>
-        </table>
-        </div>
+    <div class="card-header">
+        <h3>Result</h3>
     </div>
+    <div class="card-body">
+               
+    <table class="table table-striped table-hover">
+        <thead>
+             <tr>
+                <td>Nama Anjing</td>
+                <td>Juri</td>
+                <td>Status</td>
+                <td>Waktu Tempuh</td>
+                <td>Fault</td>
+                <td>Refusal</td>
+                <td>Result</td>
+             </tr>           
+        </thead>
+        <tbody>
+        <?php
+        // Memanggil hanya fungsi SelectNilai
+        $event = $nilai->TampilNilai($_GET['IdKategori']);
+        if (!empty($event)) {
+            foreach ($event as $x) : 
+        ?>   
+            <tr>
+                <td><?= $x->nama_anjing ?></td>
+                <td><?= $x->Username ?></td>
+                <td><?= $x->status ?></td>
+                <td><?= $x->waktu_tempuh ?></td>
+                <td><?= $x->fault ?></td>
+                <td><?= $x->refusal ?></td>
+                <td><?= $x->result ?></td>
+            </tr>
+        <?php 
+            endforeach;
+        } 
+        ?>  
+        </tbody>
+    </table>
+    
+    </div>
+</div>
+
    
 </div>
 </main>

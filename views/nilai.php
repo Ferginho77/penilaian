@@ -44,7 +44,7 @@ $peserta = new C_peserta();
                                 <input type="hidden" class="form-control" value="<?= $tampil->no_peserta ?>"  name="no_peserta">
                             </div>
                             <div class="form-group">
-                                <input type="text" class="form-control" value="<?= $_SESSION['data']['IdJuri'] ?>"  name="IdJuri">
+                                <input type="hidden" class="form-control" value="<?= $_SESSION['data']['IdJuri'] ?>"  name="IdJuri">
                             </div>
                             <div class="modal-footer">
                         <a href="devent.php?IdKategori=<?= $tampil->IdKategori ?>"><button type="button" class="btn btn-secondary">Close</button></a>
