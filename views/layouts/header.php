@@ -26,21 +26,6 @@
        
     </a>
     <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
-        <li class="dropdown-header">
-            <h6></h6>
-        </li>
-        <li>
-            <hr class="dropdown-divider">
-        </li>
-        <li>
-            <a class="dropdown-item d-flex align-items-center" href="../../app/views/profile.php">
-            <i class="far fa-user"></i>
-                <span>My Profile</span>
-            </a>
-        </li>
-        <li>
-            <hr class="dropdown-divider">
-        </li>
         <li>
             <a class="dropdown-item d-flex align-items-center" href="../routers/r_user.php?aksi=logout" onclick="return confirm('Yakin ingin keluar dari aplikasi?')">
             <i class="fas fa-sign-out-alt"></i>
