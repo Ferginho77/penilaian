@@ -1,27 +1,28 @@
 <?php
 session_start();
-class database
-{
 
-	private $host = "localhost";
-	private $uname = "root";
-	private $pass = "";
-	private $db = "perkin";
-	public $koneksi;
+class database {
+    private $host = "localhost";
+    private $uname = "root";
+    private $pass = "";
+    private $db = "perkin";
+    public $koneksi;
 
-	function __construct()
-	{
+    function __construct() {
+        // Mencoba untuk membuat koneksi
+        $this->koneksi = mysqli_connect($this->host, $this->uname, $this->pass, $this->db);
 
-		$this->koneksi = mysqli_connect($this->host, $this->uname, $this->pass);
-		mysqli_select_db($this->koneksi, $this->db);
+        // Memeriksa apakah koneksi berhasil
+        if (!$this->koneksi) {
+            die("Koneksi database mysql dan php GAGAL: " . mysqli_connect_error());
+        }
+    }
 
-		if ($this->koneksi) {
-			// echo "Koneksi database mysql dan php berhasil.";
-			return $this->koneksi;
-		} else {
-			echo "Koneksi database mysql dan php GAGAL !";
-		}
-	}
+    // Menambahkan fungsi untuk menutup koneksi
+    function __destruct() {
+        mysqli_close($this->koneksi);
+    }
 }
 
+// Membuat instance dari kelas database
 $conn = new database();

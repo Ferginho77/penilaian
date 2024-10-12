@@ -27,15 +27,15 @@ $peserta = new C_peserta();
                             </div>
                             <div class="form-group">
                                 <label for="fault">Fault</label>
-                                <input type="number" class="form-control" id="fault" name="fault">
+                                <input type="number" class="form-control" id="fault" name="fault" min="0">
                             </div>
                             <div class="form-group">
                                 <label for="refusal">Refusal</label>
-                                <input type="number" class="form-control" id="refusal" name="refusal">
+                                <input type="number" class="form-control" id="refusal" name="refusal" min="0">
                             </div>
                             <div class="form-group">
                                 <label for="result">Result</label>
-                                <input type="number" step="0.01" class="form-control" id="result" name="result">
+                                <input type="number" step="0.01" class="form-control" id="result" name="result" readonly>
                             </div>
                             <div class="form-group">
                                 <input type="hidden" class="form-control" value="<?= $tampil->IdKategori ?>"  name="IdKategori">
@@ -45,6 +45,19 @@ $peserta = new C_peserta();
                             </div>
                             <div class="form-group">
                                 <input type="hidden" class="form-control" value="<?= $_SESSION['data']['IdJuri'] ?>"  name="IdJuri">
+                            </div>
+                            <div class="form-group">
+                                <label>Kelas</label>
+                                <select name="kelas" class="form-select">
+                                    <option value="FA1">FA1</option>
+                                    <option value="FA2">FA2</option>
+                                    <option value="A1">A1</option>
+                                    <option value="A2">A2</option>
+                                    <option value="A3">A3</option>
+                                    <option value="J1">J1</option>
+                                    <option value="J2">J2</option>
+                                    <option value="J3">J3 </option>
+                                </select>
                             </div>
                             <div class="modal-footer">
                         <a href="devent.php?IdKategori=<?= $tampil->IdKategori ?>"><button type="button" class="btn btn-secondary">Close</button></a>
@@ -58,3 +71,16 @@ $peserta = new C_peserta();
                     
             
 </main>
+<script>
+    function calculateResult() {
+        const refusal = Math.max(parseFloat(document.getElementById('refusal').value) || 0, 0);
+        const fault = Math.max(parseFloat(document.getElementById('fault').value) || 0, 0);
+        const waktuTempuh = parseFloat(document.getElementById('waktu_tempuh').value) || 0;
+        const result = ((refusal + fault) * 5) + waktuTempuh;
+        document.getElementById('result').value = result.toFixed(2);
+    }
+
+    document.getElementById('refusal').addEventListener('input', calculateResult);
+    document.getElementById('fault').addEventListener('input', calculateResult);
+    document.getElementById('waktu_tempuh').addEventListener('input', calculateResult);
+</script>

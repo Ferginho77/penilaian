@@ -23,38 +23,31 @@ class C_user {
             }
         }  
     }
-    public function login($Username = null, $Password = null) {
+
+    public function login($Username=null, $Password=null){
         $conn = new database();
-        
-        // Cek apakah username atau password kosong
         if (empty($Username) || empty($Password)) {
             echo "<script>alert('Username dan Password harus diisi.');window.location='../index.php'</script>";
             exit();
         }
-    
-        // Cek apakah tombol login ditekan
+
+        //untuk mengecek apakah tombol login di tekan, jika di tekan akan menjalankan perintah dibawahnya
         if (isset($_POST['login'])) {
-            $sql = "SELECT * FROM juri WHERE Username = '$Username'";
+            $sql = "SELECT * FROM juri WHERE Username  = '$Username'";
             $result = mysqli_query($conn->koneksi, $sql);
-    
-            // Cek apakah query berhasil dan data ditemukan
-            if ($result && mysqli_num_rows($result) > 0) {
-                $data = mysqli_fetch_assoc($result);
-                
-                // Verifikasi password
-                if (password_verify($Password, $data['Password'])) {
+            $data = mysqli_fetch_assoc($result);
+            if ($result) {
+               if(mysqli_num_rows($result) > 0){
+                if(password_verify($Password, $data['Password'])){
                     $_SESSION["data"] = $data;
                     header("Location: ../views/dashboard.php");
-                } else {
+                }else{
                     echo "<script>alert('Password/Username Salah');window.location='../index.php'</script>";
                 }
-            } else {
-                // Username tidak ditemukan
-                echo "<script>alert('Password/Username Salah');window.location='../index.php'</script>";
+            }
             }
         }
     }
-    
 
 
     public function logout(){

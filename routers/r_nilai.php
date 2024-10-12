@@ -13,12 +13,14 @@ if(isset($_GET['aksi'])) {
             $fault = $_POST['fault'];
             $refusal = $_POST['refusal'];
             $result = $_POST['result'];
+            $kelas = $_POST['kelas'];
+            $tanggal = date("Y-m-d");
             $IdKategori = $_POST['IdKategori'];
             $no_peserta = $_POST['no_peserta'];
             $IdJuri = $_POST['IdJuri'];
           
         
-            $nilai->TambahNilai(  $status, $waktu_tempuh, $fault, $refusal, $result, $IdKategori, $no_peserta, $IdJuri);
+            $nilai->TambahNilai(  $status, $waktu_tempuh, $fault, $refusal, $result, $kelas, $tanggal, $IdKategori, $no_peserta, $IdJuri);
             if ($nilai) {
                 header("Location: ../views/devent.php?IdKategori=$IdKategori");
             } else {

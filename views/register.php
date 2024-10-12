@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -33,7 +32,7 @@
                 <button type="submit" name="regis" class="btn-input">Register</button>
             <div class="bottom">
                 <p>Sudah punya akun?
-                    <a href="../../index.php">Login disini</a>
+                    <a href="../index.php">Login disini</a>
                 </p>
             </div>
         </form>

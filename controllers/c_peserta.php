@@ -44,4 +44,12 @@ class C_peserta {
         }
         return $hasil;
     }
+
+    // Fungsi untuk menghitung total peserta
+    public function hitung_peserta() {
+        $conn = new database();
+        $data = mysqli_query($conn->koneksi, "SELECT COUNT(*) as total FROM peserta");
+        $hasil = mysqli_fetch_object($data);
+        return $hasil->total;
+    }
 }

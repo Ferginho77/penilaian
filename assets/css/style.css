@@ -1,36 +1,85 @@
-*{
-    padding: 0;
-    margin: 0;
-    font-family: 'Poppins' sans-serif;
-}
+/* style.css */
 
+/* Mengatur latar belakang halaman */
 body {
     background: rgb(80,80,226);
     background: linear-gradient(103deg, rgba(80,80,226,1) 0%, rgba(117,255,206,1) 100%);
 }
 
-main{
-    margin-top: 120px;
-    padding: 15px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+/* Menambahkan gaya pada card */
+.card {
+    border: 1px solid #007bff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
 }
 
-.navbar-nav a:hover{
-    text-decoration: none;
-     background-color: #4F75FF;
-     color: white;
-     border-radius: 20px;
-     transition: 0.6s;
- }
- .navbar-nav a{
-    text-decoration: none;
-    display: flex;
-    margin: 10px;
-    padding: 6px 15px;
-   color: #4F75FF;
-   font-weight: 600;
- }
+/* Mengatur warna header card */
+.card-header {
+    background-color: #007bff;
+    color: white;
+    font-size: 1.25rem;
+    font-weight: bold;
+}
 
- 
+/* Mengatur label */
+label {
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+/* Mengatur input dan textarea */
+input.form-control, textarea.form-control {
+    border-radius: 5px;
+    border: 1px solid #ced4da;
+}
+
+/* Mengatur tombol */
+.btn-input {
+    margin-top: 10px;
+}
+
+/* Mengatur tabel */
+.table {
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+/* Mengatur header tabel */
+.table thead {
+    background-color: #007bff;
+    color: rgb(141, 37, 37);
+}
+
+/* Mengatur warna baris tabel saat hover */
+.table tbody tr:hover {
+    background-color: #af7272;
+}
+
+/* Mengatur modal */
+.modal-content {
+    border-radius: 8px;
+}
+
+/* Mengatur snackbar */
+#snackbar {
+    visibility: hidden; 
+    min-width: 250px; 
+    margin-left: -125px; 
+    background-color: #333; 
+    color: #fff; 
+    text-align: center; 
+    border-radius: 2px; 
+    padding: 16px; 
+    position: fixed; 
+    z-index: 1; 
+    left: 50%; 
+    bottom: 30px; 
+    font-size: 17px; 
+}
+
+/* Untuk menampilkan snackbar */
+#snackbar.show {
+    visibility: visible; 
+}
+
